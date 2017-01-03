@@ -11,6 +11,9 @@ namespace sapphire
         Checking,
         Savings
     }
+    /// <summary>
+    /// This class describes a bank account
+    /// </summary>
     class Account
    
     {
