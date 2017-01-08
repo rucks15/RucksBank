@@ -8,9 +8,30 @@ namespace sapphire
 {
     static class Bank
     {
-        public static Account CreateAccount(string emailAddress, TypeOfAccounts accountType)
-        { }
+        #region Fields
+        private static List<Account> accounts = new List<Account>();
+        
+        #endregion Fields
 
         
+        public static Account CreateAccount(string emailAddress, TypeOfAccounts accountType)
+        {
+            var account = new Account();
+            account.EmailAddress = emailAddress;
+            account.AccountType = accountType;
+            accounts.Add(account);
+            return account;
+        }
+       
+        public static void PrintAllAccounts()
+        {
+            foreach (var account in accounts)
+            {
+                Console.WriteLine($"AccountNumber:{account.AccountNumber},Account Type:{account.AccountType},Email ID :{account.EmailAddress},Balance:{account.Balance}C");
+            }
+        }
+        
+
+
     }
 }

@@ -21,7 +21,9 @@ namespace sapphire
         private static int lastAccountNumber = 1;
         #endregion
 
-        
+        public static List<Transactions> transactions = new List<Transactions>();
+
+
         #region properties
 
         /// <summary>
@@ -55,20 +57,47 @@ namespace sapphire
 
         public decimal Deposit(decimal amount)
         {
+            var transaction = new Transactions();
+            transaction.TransactionDate = DateTime.Now;
+            transaction.TransactionType = TypeOfTransaction.Credit;
+            transaction.StartingBalance = Balance;
+            transaction.Amount = amount;
+            transactions.Add(transaction);
             //Balance = Balance + amount;
             Balance += amount;
             return Balance;
+            
         }
 
         public decimal Withdraw(decimal amount)
         {
+            var transaction = new Transactions();
+            transaction.TransactionDate = DateTime.Now;
+            transaction.TransactionType = TypeOfTransaction.Debit;
+            transaction.StartingBalance = Balance;
+            transaction.Amount = amount;
+            transactions.Add(transaction);
             if (amount <= Balance)
             {
                 Balance -= amount;
                 return Balance;
             }
-            return Balance;
-        }         
+            else
+            {
+                Console.WriteLine("Sorry, No sufficient funds in your account");
+                return Balance;
+            }
+        }
+
+        public void PrintTransactions()
+        {
+
+            foreach (var trans in transactions)
+            {
+                Console.WriteLine($"Date:{trans.TransactionDate}, Transaction Type : {trans.TransactionType}, Starting Balance:{trans.StartingBalance}, Balance : {trans.Balance}");
+
+            }
+        }
         #endregion Methods
     }
 }
