@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace sapphire
 {
-    enum TypeOfTransaction
+    public enum TypeOfTransaction
     {
         Credit,
         Debit
     }
-    class Transactions
+    public class Transactions
     {
        
         #region Properties
+        [Key]
         public int TransactionNumber { get; set; }
 
         public DateTime TransactionDate { get; set; }
@@ -51,8 +54,10 @@ namespace sapphire
                 return balance;
             }
         }
+        [ForeignKey("Account")]
+        public int AccountNumber { get; set; }
 
-
+        public virtual Account Account { get; set; }
 
         #endregion
 

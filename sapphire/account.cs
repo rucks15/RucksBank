@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace sapphire
     /// <summary>
     /// This class describes a bank account
     /// </summary>
-    class Account
+    public class Account
    
     {
         #region statics
@@ -25,7 +26,7 @@ namespace sapphire
 
 
         #region properties
-
+        [Key]
         /// <summary>
         /// Account number of the user
         /// </summary>
@@ -42,6 +43,8 @@ namespace sapphire
         /// User's Account type
         /// </summary>
         public TypeOfAccounts AccountType { get; set; }
+
+        public virtual ICollection<Transactions> alltransactions {get; set;}
         
 
         #endregion Properties
@@ -57,35 +60,39 @@ namespace sapphire
 
         public decimal Deposit(decimal amount)
         {
-            var transaction = new Transactions();
-            transaction.TransactionDate = DateTime.Now;
-            transaction.TransactionType = TypeOfTransaction.Credit;
-            transaction.StartingBalance = Balance;
-            transaction.Amount = amount;
-            transactions.Add(transaction);
-            //Balance = Balance + amount;
-            Balance += amount;
-            return Balance;
+            using (var db = new AccountDB())
+            {
+                var original = db.Accounts.Where(a => a.AccountNumber == this.AccountNumber).First();
+                var updates = original;
+                Balance = Balance + amount;
+                updates.Balance += amount;
+                db.Entry(original).CurrentValues.SetValues(updates);
+                db.SaveChanges();
+                return Balance;
+            }
             
         }
 
         public decimal Withdraw(decimal amount)
         {
-            var transaction = new Transactions();
-            transaction.TransactionDate = DateTime.Now;
-            transaction.TransactionType = TypeOfTransaction.Debit;
-            transaction.StartingBalance = Balance;
-            transaction.Amount = amount;
-            transactions.Add(transaction);
-            if (amount <= Balance)
+            using (var db = new AccountDB())
             {
-                Balance -= amount;
-                return Balance;
-            }
+                var original = db.Accounts.Where(a => a.AccountNumber == this.AccountNumber).First();
+                var updates = original;
+                if (amount <= updates.Balance)
+                {
+                    Balance -= amount;
+                    updates.Balance -= amount;
+                    db.Entry(original).CurrentValues.SetValues(updates);
+                    db.SaveChanges();
+                    return Balance;
+                }
             else
             {
                 Console.WriteLine("Sorry, No sufficient funds in your account");
                 return Balance;
+            }
+            
             }
         }
 

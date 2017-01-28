@@ -12,6 +12,8 @@ namespace sapphire
         {
             Console.WriteLine("*******************************");
             Console.WriteLine("Welcome to Sapphire Bank");
+            Console.WriteLine("Enter the email address:");
+            var email = Console.ReadLine();
             
             while(true)
             { 
@@ -31,26 +33,40 @@ namespace sapphire
                         Console.WriteLine("Have a great day");
                         return;
                     case "1":
-                        decimal amt,amt1;
-                        Console.Write("Enter the E-Mail Address : ");
-                        var emailAddress = Console.ReadLine();
-                        var myAccount = Bank.CreateAccount(emailAddress, TypeOfAccounts.Checking);
+                        
+                        var myAccount = Bank.CreateAccount(email, TypeOfAccounts.Checking);
                         Console.WriteLine($"Account Number:{myAccount.AccountNumber },Balance:{myAccount.Balance:C}");
 
-                        Console.WriteLine("Enter the amount to be deposited:");
-                        amt = Decimal.Parse(Console.ReadLine());
-                        myAccount.Deposit(amt);
+                        
 
-                        Console.WriteLine("Enter the amount to withdraw:");
-                        amt1 = Decimal.Parse(Console.ReadLine());
-                        myAccount.Withdraw(amt1);
+                        
                         myAccount.PrintTransactions();
                         
                         break;
-                   
+                    case "2":
+                        Bank.PrintAllAccounts(email);
+                        Console.Write("Enter the account number for which you want to deposit:");
+                        var strAN = Console.ReadLine();
+                        var accountnumber = Convert.ToInt32(strAN);
 
-                   case "4":
-                        Bank.PrintAllAccounts();
+                        Console.WriteLine("Enter the amount to be deposited:");
+                        var amt = Convert.ToDecimal(Console.ReadLine());
+                        Bank.Deposit(amt, accountnumber);
+
+                        break;
+                    case "3":
+                        Bank.PrintAllAccounts(email);
+                        Console.Write("Enter the account number for which you want to deposit:");
+                         strAN = Console.ReadLine();
+                         accountnumber = Convert.ToInt32(strAN);
+
+                        Console.WriteLine("Enter the amount to withdraw:");
+                        var amt1 = Convert.ToDecimal(Console.ReadLine());
+                        Bank.withdraw(accountnumber, amt1);
+                        break;
+
+                    case "4":
+                        Bank.PrintAllAccounts(email);
                         break;
                    
 
