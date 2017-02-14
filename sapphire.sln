@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sapphire", "sapphire\sapphire.csproj", "{366697BF-6D6E-42DA-9428-261CB2990838}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBankUI", "MyBankUI\MyBankUI.csproj", "{6F1E9F09-AAEC-42C4-BE77-20FF20B1272D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{366697BF-6D6E-42DA-9428-261CB2990838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{366697BF-6D6E-42DA-9428-261CB2990838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{366697BF-6D6E-42DA-9428-261CB2990838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1E9F09-AAEC-42C4-BE77-20FF20B1272D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1E9F09-AAEC-42C4-BE77-20FF20B1272D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1E9F09-AAEC-42C4-BE77-20FF20B1272D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1E9F09-AAEC-42C4-BE77-20FF20B1272D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

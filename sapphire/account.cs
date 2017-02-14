@@ -18,9 +18,7 @@ namespace sapphire
     public class Account
    
     {
-        #region statics
-        private static int lastAccountNumber = 1;
-        #endregion
+        
 
         public static List<Transactions> transactions = new List<Transactions>();
 
@@ -30,7 +28,9 @@ namespace sapphire
         /// <summary>
         /// Account number of the user
         /// </summary>
-        public int AccountNumber { get; private set; }
+        public int AccountNumber { get; set; }
+        public string AccountName { get; set; }
+       
         /// <summary>
         /// Email Address of the user
         /// </summary>
@@ -49,12 +49,7 @@ namespace sapphire
 
         #endregion Properties
 
-        #region constructor
-        public Account()
-        {
-            AccountNumber = lastAccountNumber++;
-        }
-        #endregion
+        
 
         #region Methods
 

@@ -33,40 +33,67 @@ namespace sapphire
                         Console.WriteLine("Have a great day");
                         return;
                     case "1":
-                        
-                        var myAccount = Bank.CreateAccount(email, TypeOfAccounts.Checking);
-                        Console.WriteLine($"Account Number:{myAccount.AccountNumber },Balance:{myAccount.Balance:C}");
+                        try
+                        {
+                            //var myAccount = Bank.CreateAccount(email, TypeOfAccounts.Checking);
+                            //Console.WriteLine($"Account Number:{myAccount.AccountNumber },Balance:{myAccount.Balance:C}");
+
+                        }
+
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine($"Error occurred:{ex.Message}");
+                        }
 
                         
-
                         
-                        myAccount.PrintTransactions();
                         
                         break;
                     case "2":
-                        Bank.PrintAllAccounts(email);
-                        Console.Write("Enter the account number for which you want to deposit:");
-                        var strAN = Console.ReadLine();
-                        var accountnumber = Convert.ToInt32(strAN);
+                        try
+                        {
+                            //Bank.PrintAllAccounts(email);
+                            Console.Write("Enter the account number for which you want to deposit:");
+                            var strAN = Console.ReadLine();
+                            var accountnumber = Convert.ToInt32(strAN);
 
-                        Console.WriteLine("Enter the amount to be deposited:");
-                        var amt = Convert.ToDecimal(Console.ReadLine());
-                        Bank.Deposit(amt, accountnumber);
-
+                            Console.WriteLine("Enter the amount to be deposited:");
+                            var amt = Convert.ToDecimal(Console.ReadLine());
+                            Bank.Deposit(amt, accountnumber);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Deposit failed,please try again");
+                        }
                         break;
                     case "3":
-                        Bank.PrintAllAccounts(email);
-                        Console.Write("Enter the account number for which you want to deposit:");
-                         strAN = Console.ReadLine();
-                         accountnumber = Convert.ToInt32(strAN);
+                        try
+                        {
+                            //Bank.PrintAllAccounts(email);
+                            Console.Write("Enter the account number for which you want to deposit:");
+                            var strAN = Console.ReadLine();
+                            var accountnumber = Convert.ToInt32(strAN);
 
-                        Console.WriteLine("Enter the amount to withdraw:");
-                        var amt1 = Convert.ToDecimal(Console.ReadLine());
-                        Bank.withdraw(accountnumber, amt1);
+                            Console.WriteLine("Enter the amount to withdraw:");
+                            var amt1 = Convert.ToDecimal(Console.ReadLine());
+                            Bank.withdraw(accountnumber, amt1);
+                        }
+                        catch(InvalidOperationException)
+                        {
+                            Console.WriteLine("Sorry cannot connect to the database.Try again!");
+                        }
+                        catch(FormatException)
+                        {
+                            Console.WriteLine("Invalid input, please try again");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Sorry, something went wrong. try again");
+                        }
                         break;
 
                     case "4":
-                        Bank.PrintAllAccounts(email);
+                        //Bank.PrintAllAccounts(email);
                         break;
                    
 
