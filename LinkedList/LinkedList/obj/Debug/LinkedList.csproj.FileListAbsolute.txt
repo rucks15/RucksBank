@@ -1,0 +1,9 @@
+D:\Projects\LinkedList\LinkedList\bin\Debug\LinkedList.exe.config
+D:\Projects\LinkedList\LinkedList\bin\Debug\LinkedList.exe
+D:\Projects\LinkedList\LinkedList\bin\Debug\LinkedList.pdb
+D:\Projects\LinkedList\LinkedList\obj\Debug\LinkedList.csprojResolveAssemblyReference.cache
+D:\Projects\LinkedList\LinkedList\obj\Debug\LinkedList.exe
+D:\Projects\LinkedList\LinkedList\obj\Debug\LinkedList.pdb
+C:\Bankgithub\LinkedList\LinkedList\bin\Debug\LinkedList.exe.config
+C:\Bankgithub\LinkedList\LinkedList\obj\Debug\LinkedList.exe
+C:\Bankgithub\LinkedList\LinkedList\obj\Debug\LinkedList.pdb
